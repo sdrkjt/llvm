@@ -1,0 +1,6 @@
+[submodule "kscope"]
+	path = kscope
+	url = https://github.com/wglass/kscope
+[submodule "my_toy_compiler"]
+	path = my_toy_compiler
+	url = https://github.com/lsegal/my_toy_compiler

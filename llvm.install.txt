@@ -1,0 +1,13 @@
+
+/*************Raring (13.04)***********************************************/
+touch /etc/apt/sources.list.d/llvm.list
+echo "deb http://llvm.org/apt/raring/ llvm-toolchain-raring main" > /etc/apt/sources.list.d/llvm.list
+echo "deb-src http://llvm.org/apt/raring/ llvm-toolchain-raring main" > /etc/apt/sources.list.d/llvm.list
+apt-get update
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 15CF4D18AF4F7421
+apt-get update
+
+#To install all packages
+sudo apt-get install clang-3.5 clang-3.5-doc libclang-common-3.5-dev libclang-3.5-dev libclang1-3.5 libclang1-3.5-dbg libllvm-3.5-ocaml-dev libllvm3.5 libllvm3.5-dbg lldb-3.5 llvm-3.5 llvm-3.5-dev llvm-3.5-doc llvm-3.5-examples llvm-3.5-runtime clang-modernize-3.5 clang-format-3.5 python-clang-3.5 lldb-3.5-dev
