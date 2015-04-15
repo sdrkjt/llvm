@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 3.5  (Linux)">
+	<META NAME="CREATED" CONTENT="20090519;10431200">
+	<META NAME="CHANGEDBY" CONTENT="TrungDung Nguyen">
+	<META NAME="CHANGED" CONTENT="20150415;8425800">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.04in }
+		H3.cjk { font-family: "WenQuanYi Micro Hei" }
+		H3.ctl { font-family: "Lohit Hindi" }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P>********************13/04/2015****************************</P>
+<P><B>COMPILATION: lexical-syntax-semantic (tu vung-cu phap-ngu
+nghia) </B>
+</P>
+<P><A HREF="http://en.wikipedia.org/wiki/Compiler"><U><SPAN STYLE="font-weight: normal">http://en.wikipedia.org/wiki/Compiler</SPAN></U></A></P>
+<H3 CLASS="western"><A NAME="Structure_of_a_compiler"></A><B>Structure
+of a compiler: </B><SPAN STYLE="font-weight: normal">http://en.wikipedia.org/wiki/Compiler</SPAN></H3>
+<P>Compilers bridge source programs in high-level languages with the
+underlying hardware. A compiler verifies code syntax, generates
+efficient object code, performs run-time organization, and formats
+the output according to <A HREF="http://en.wikipedia.org/wiki/Assembler_%28computing%29">assembler</A>
+and <A HREF="http://en.wikipedia.org/wiki/Linker_%28computing%29">linker</A>
+conventions. A compiler consists of:</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><I>The front end</I>: Verifies
+	syntax and semantics, and generates an <I>intermediate
+	representation</I> or <I>IR</I> of the source code for processing by
+	the middle-end. Performs <A HREF="http://en.wikipedia.org/wiki/Type_checking">type
+	checking</A> by collecting type information. Generates errors and
+	warning, if any, in a useful way. Aspects of the front end include
+	lexical analysis, syntax analysis, and semantic analysis. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><I>The middle end</I>: Performs
+	optimizations, including removal of useless or unreachable code,
+	discovery and propagation of constant values, relocation of
+	computation to a less frequently executed place (e.g., out of a
+	loop), or specialization of computation based on the context.
+	Generates another IR for the backend. 
+	</P>
+	<LI><P><I>The back end</I>: Generates the assembly code, performing
+	<A HREF="http://en.wikipedia.org/wiki/Register_allocation">register
+	allocation</A> in process. (Assigns <A HREF="http://en.wikipedia.org/wiki/Processor_register">processor
+	registers</A> for the program variables where possible.) Optimizes
+	target code utilization of the hardware by figuring out how to keep
+	parallel <A HREF="http://en.wikipedia.org/wiki/Execution_unit">execution
+	units</A> busy, filling <A HREF="http://en.wikipedia.org/wiki/Delay_slot">delay
+	slots</A>. Although most algorithms for optimization are in <A HREF="http://en.wikipedia.org/wiki/NP_%28complexity%29">NP</A>,
+	heuristic techniques are well-developed. 
+	</P>
+</UL>
+<P><BR><BR>
+</P>
+<P><IMG SRC="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Compiler.svg/800px-Compiler.svg.png" NAME="graphics1" ALIGN=BOTTOM WIDTH=678 HEIGHT=623 BORDER=0></P>
+<P><IMG SRC="http://upload.wikimedia.org/wikipedia/commons/5/5b/Xxx_Scanner_and_parser_example_for_C.gif" NAME="graphics2" ALIGN=BOTTOM WIDTH=678 HEIGHT=674 BORDER=0></P>
+<H3 CLASS="western"><A NAME="Back_end"></A><B>Back end</B></H3>
+<P>The term <I>back end</I> is sometimes confused with <A HREF="http://en.wikipedia.org/wiki/Code_generation_%28compiler%29"><I>code
+generator</I></A> because of the overlapped functionality of
+generating assembly code. Some literature uses <I><B>middle end</B></I>
+to distinguish the generic analysis and optimization phases in the
+back end from the machine-dependent code generators.</P>
+<P>The main phases of the back end include the following:</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://en.wikipedia.org/wiki/Compiler_analysis">Analysis</A>:
+	This is the gathering of program information from the intermediate
+	representation derived from the input; <A HREF="http://en.wikipedia.org/wiki/Data-flow_analysis">data-flow
+	analysis</A> is used to build <A HREF="http://en.wikipedia.org/wiki/Use-define_chain">use-define
+	chains</A>, together with <A HREF="http://en.wikipedia.org/wiki/Dependence_analysis">dependence
+	analysis</A>, <A HREF="http://en.wikipedia.org/wiki/Alias_analysis">alias
+	analysis</A>, <A HREF="http://en.wikipedia.org/wiki/Pointer_analysis">pointer
+	analysis</A>, <A HREF="http://en.wikipedia.org/wiki/Escape_analysis">escape
+	analysis</A>, etc. Accurate analysis is the basis for any compiler
+	optimization. The <A HREF="http://en.wikipedia.org/wiki/Call_graph">call
+	graph</A> and <A HREF="http://en.wikipedia.org/wiki/Control_flow_graph">control
+	flow graph</A> are usually also built during the analysis phase. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://en.wikipedia.org/wiki/Compiler_optimization">Optimization</A>:
+	the intermediate language representation is transformed into
+	functionally equivalent but faster (or smaller) forms. Popular
+	optimizations are <A HREF="http://en.wikipedia.org/wiki/Inline_expansion">inline
+	expansion</A>, <A HREF="http://en.wikipedia.org/wiki/Dead_code_elimination">dead
+	code elimination</A>, <A HREF="http://en.wikipedia.org/wiki/Constant_propagation">constant
+	propagation</A>, <A HREF="http://en.wikipedia.org/wiki/Loop_transformation">loop
+	transformation</A>, <A HREF="http://en.wikipedia.org/wiki/Register_allocation">register
+	allocation</A> and even <A HREF="http://en.wikipedia.org/wiki/Automatic_parallelization">automatic
+	parallelization</A>. 
+	</P>
+	<LI><P><A HREF="http://en.wikipedia.org/wiki/Code_generation_%28compiler%29">Code
+	generation</A>: the transformed intermediate language is translated
+	into the output language, usually the native <A HREF="http://en.wikipedia.org/wiki/Machine_language">machine
+	language</A> of the system. This involves resource and storage
+	decisions, such as deciding which variables to fit into registers
+	and memory and the selection and scheduling of appropriate machine
+	instructions along with their associated addressing modes (see also
+	<A HREF="http://en.wikipedia.org/wiki/Sethi-Ullman_algorithm">Sethi-Ullman
+	algorithm</A>). Debug data may also need to be generated to
+	facilitate <A HREF="http://en.wikipedia.org/wiki/Debugging">debugging</A>.
+		</P>
+</OL>
+<P STYLE="font-weight: normal"><BR><BR>
+</P>
+<H1 LANG="en"><FONT SIZE=3><B>Interprocedural optimization</B></FONT></H1>
+<P LANG="en" STYLE="font-weight: normal">IPO differs from other
+compiler optimization because it analyzes the entire program; other
+optimizations look at only a single function, or even a single block
+of code</P>
+<P><A HREF="http://en.wikipedia.org/wiki/Interprocedural_optimization"><SPAN STYLE="font-weight: normal">http://en.wikipedia.org/wiki/Interprocedural_optimization</SPAN></A></P>
+<H3 CLASS="western"><BR><BR>
+</H3>
+<P><B>GNU Readline</B></P>
+<P STYLE="font-weight: normal"><A HREF="http://en.wikipedia.org/wiki/GNU_Readline">http://en.wikipedia.org/wiki/GNU_Readline</A></P>
+<P><SPAN STYLE="font-weight: normal">GNU Readline is a <A HREF="http://en.wikipedia.org/wiki/Software_library">software
+library</A> that provides <A HREF="http://en.wikipedia.org/wiki/Line_editor">line-editing</A>
+and history capabilities for <A HREF="http://en.wikipedia.org/wiki/Interactive_program">interactive
+programs</A> with a <A HREF="http://en.wikipedia.org/wiki/Command-line_interface">command-line
+interface</A></SPAN></P>
+<P STYLE="font-weight: normal"><BR><BR>
+</P>
+<P><B>Fonction de hachage (hash function): gperf </B>
+</P>
+<P><A HREF="https://www.gnu.org/software/gperf/"><SPAN STYLE="font-weight: normal">https://www.gnu.org/software/gperf/</SPAN></A></P>
+<P><A HREF="http://fr.wikipedia.org/wiki/Fonction_de_hachage"><SPAN STYLE="font-weight: normal">http://fr.wikipedia.org/wiki/Fonction_de_hachage</SPAN></A></P>
+<P STYLE="font-weight: normal"><BR><BR>
+</P>
+<P><B>1.AST: </B>The end product of semantic parsing is an AST</P>
+<P>http://en.wikipedia.org/wiki/Abstract_syntax_tree</P>
+<P><BR><BR>
+</P>
+<P><B>2.The LEXER: lexical analysis</B></P>
+<P><SPAN STYLE="font-weight: normal">When it comes to implementing a
+language, the first thing needed is the ability to process a text
+file and recognize what it says. The traditional way to do this is to
+use a &ldquo;<A HREF="http://en.wikipedia.org/wiki/Lexical_analysis">lexer</A>&rdquo;
+(aka &lsquo;scanner&rsquo;) to break the input up into &ldquo;tokens&rdquo;.
+Each token returned by the lexer includes a token code and
+potentially some metadata (e.g. the numeric value of a number).</SPAN></P>
+<P><A HREF="http://llvm.org/docs/tutorial/OCamlLangImpl1.html">http://llvm.org/docs/tutorial/OCamlLangImpl1.html</A></P>
+<P><BR><BR>
+</P>
+<H1><FONT SIZE=3>Writing Your Own Toy Compiler Using Flex, Bison and
+LLVM</FONT></H1>
+<P>http://gnuu.org/2009/09/18/writing-your-own-toy-compiler/6/</P>
+<P><BR><BR>
+</P>
+<P>To summarize, the steps are as follows:</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0in"><STRONG>Lexical Analysis with
+	</STRONG><STRONG><EM>Flex</EM></STRONG>: Split input data into a set
+	of tokens (identifiers, keywords, numbers, brackets, braces, etc.) 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><STRONG>Semantic Parsing with
+	</STRONG><STRONG><EM>Bison</EM></STRONG>: Generate an AST while
+	parsing the tokens. Bison will do most of the legwork here, we just
+	need to define our AST. 
+	</P>
+	<LI><P><STRONG>Assembly with </STRONG><STRONG><EM>LLVM</EM></STRONG>:
+	This is where we walk over our AST and generate byte/machine code
+	for each node. As crazy as it sounds, this is probably the <EM>easiest</EM>
+	step. 
+	</P>
+</OL>
+<P>           This means all we&rsquo;re really doing is translating
+from one AST to another</P>
+<P><BR><BR>
+</P>
+<P>$ bison -d -o parser.cpp parser.y</P>
+<P>$ lex -o tokens.cpp tokens.l</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>
