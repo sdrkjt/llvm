@@ -1,0 +1,22 @@
+http://gnuu.org/2009/09/18/writing-your-own-toy-compiler/
+
+echo 'int do_math(int a) { int x = a * 5 + 3 } do_math(10)' | ./parser
+
+cat example.txt | ./parser
+
+node.h: 
+|node(NExpression,NStatement)
+|--|NExpression(NInteger,NDouble,NIdentifier,NMethodCall,NBinaryOperator,NAssignment,NBlock)
+|--|--|NIdentifier: std::string name;
+|--|--|NDouble: double value;
+|--|--|NBlock: StatementList statements;
+|--|--|NMethodCall: ExpressionList  arguments;
+|--|NStatement(NExpressionStatement,NReturnStatement,NVariableDeclaration,NExternDeclaration,NFunctionDeclaration)
+|--|--|NFunctionDeclaration: VariableList arguments;NBlock& b;
+
+parse.y:
+|NBlock *programBlock; /* the top level root node of our final AST */
+
+codegen.h
+|CodeGenBlock
+|CodeGenContext :  std::stack<CodeGenBlock *> blocks; 
