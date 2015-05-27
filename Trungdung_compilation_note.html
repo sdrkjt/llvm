@@ -6,7 +6,8 @@
 	<META NAME="GENERATOR" CONTENT="LibreOffice 3.5  (Linux)">
 	<META NAME="CREATED" CONTENT="20090519;10431200">
 	<META NAME="CHANGEDBY" CONTENT="TrungDung Nguyen">
-	<META NAME="CHANGED" CONTENT="20150415;11202700">
+	<META NAME="CHANGED" CONTENT="20150428;13440000">
+	<META NAME="CHANGEDBY" CONTENT="TrungDung Nguyen">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { margin: 0.79in }
@@ -192,17 +193,17 @@ chaque instruction est cod&eacute;e en <SPAN STYLE="text-decoration: none">binai
 <P>-La <B>portabilit&eacute; </B>: le m&ecirc;me <I>bytecode</I> peut
 &ecirc;tre ex&eacute;cut&eacute; sur diverses plates<A HREF="http://fr.wikipedia.org/wiki/Plate-forme_%28informatique%29">-</A>formes
 ou architectures pour lesquelles un interpr&eacute;teur existe</P>
-<P> Les performances des interpr&eacute;teurs de <I>bytecode</I> sont
+<P>Les performances des interpr&eacute;teurs de <I>bytecode</I> sont
 g&eacute;n&eacute;ralement bien meilleures que celles des
 interpr&eacute;teurs de scripts</P>
-<P> De nombreux langages interpr&eacute;t&eacute;s sont en fait
+<P>De nombreux langages interpr&eacute;t&eacute;s sont en fait
 compil&eacute;s en <I>bytecode</I> avant d'&ecirc;tre ex&eacute;cut&eacute;s
 par un interpr&eacute;teur de <I>bytecode</I>: e.g. Python</P>
 <P>-Certains compilateurs, comme <A HREF="http://fr.wikipedia.org/wiki/LLVM">LLVM</A>,
- utilisent le <I>bytecode</I> comme <A HREF="http://fr.wikipedia.org/wiki/Repr&eacute;sentation_interm&eacute;diaire">repr&eacute;sentation
+utilisent le <I>bytecode</I> comme <A HREF="http://fr.wikipedia.org/wiki/Repr&eacute;sentation_interm&eacute;diaire">repr&eacute;sentation
 interm&eacute;diaire</A> avant la transformation en code machine vers
 l'architecture cible</P>
-<P>-<I><B>JIT</B></I><I>: </I> traduise le <I>bytecode</I> en code
+<P>-<I><B>JIT</B></I><I>: </I>traduise le <I>bytecode</I> en code
 machine au fur et &agrave; mesure de l&rsquo;ex&eacute;cution, cela
 permet d&rsquo;acc&eacute;l&eacute;rer l&rsquo;ex&eacute;cution sur
 les boucles ou les fonctions appel&eacute;es plusieurs fois tout en
@@ -225,5 +226,37 @@ portages de <I>Java, Lisp, Scheme, Ocaml, Perl (Parrot), Python,
 Ruby, Lua, C#,</I> etc. sont faits <I>via</I> une machine virtuelle.</P>
 <P><BR><BR>
 </P>
+<P STYLE="page-break-before: always">********************28/04/2015****************************</P>
+<P><B>SYMBOL TABLE</B></P>
+<P><A HREF="http://en.wikipedia.org/wiki/Symbol_table">http://en.wikipedia.org/wiki/Symbol_table</A></P>
+<P>a <B>symbol table</B> is a <A HREF="http://en.wikipedia.org/wiki/Data_structure">data
+structure</A> used by a language translator such as a compiler or
+interpreter, where each identifier in a program's source code is
+associated with information relating to its declaration or appearance
+in the source, such as its <B>type</B>, <B>scope</B> level and
+sometimes its <B>location</B>.</P>
+<P><BR><BR>
+</P>
+<P><B>HASH TABLE </B>
+</P>
+<P>http://en.wikipedia.org/wiki/Hash_table</P>
+<P>https://www.gnu.org/software/gperf/</P>
+<P>GNU gperf is a perfect hash function generator. For a given list
+of strings, it produces a hash function and hash table, in form of C
+or C++ code, for looking up a value depending on the input string</P>
+<P><BR><BR>
+</P>
+<P><B>Difference between hash table &amp; stl map (C++):</B><BR>hash
+table -&gt; data is tied to the key by a hash function<BR>stl map -&gt;
+data is tied stored based on the value of the key in a balanced
+binary search tree.&nbsp;<BR><BR>hash table -&gt; need to take
+chaining into account if two different values have the same the same
+key - key collision.&nbsp;<BR>hash table -&gt; values are not stored
+in sorted order<BR>stl map -&gt; values are stored in sorted
+order<BR><BR>hash table -&gt; lookup time is O(1), but dependent on
+the hash function efficiency.&nbsp; High collision rate will increase
+the lookup time.<BR>stl map -&gt; lookup time is O(lg n)<BR>same
+applies for inserts<BR><BR>stl map is good to look up min and max
+values, print values in sorted order and finding the closest element</P>
 </BODY>
 </HTML>

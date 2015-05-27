@@ -17,6 +17,7 @@ node.h:
 parse.y:
 |NBlock *programBlock; /* the top level root node of our final AST */
 
-codegen.h
-|CodeGenBlock
+codegen.h : LLVM AST adaptation
+each node (see note.h) has its own codeGen [llvm::Value* codeGen(CodeGenContext& context)]
+|CodeGenBlock: structure of BasicBlock* & Value * <=> LLVM environment
 |CodeGenContext :  std::stack<CodeGenBlock *> blocks; 
