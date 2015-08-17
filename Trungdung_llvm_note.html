@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
+	<META NAME="CREATED" CONTENT="20150817;7405700">
+	<META NAME="CHANGED" CONTENT="20150817;18545100">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		TD P { margin-bottom: 0cm }
+		A:link { so-language: zxx }
+		TT.ctl { font-family: "Lohit Hindi", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="fr-FR" DIR="LTR">
+<P STYLE="margin-bottom: 0cm">****************************17/08/2015*****************************************</P>
+<P STYLE="margin-bottom: 0cm">1. LLVM FrontEnd&nbsp;: 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">lexical-syntax-semantic, output
+	AST</P>
+	<LI><P STYLE="margin-bottom: 0cm">AST → CodeGen → IR (.ll)</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">2. MiddleEnd&nbsp;:</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">.ll → Optimization → .ll</P>
+	<LI><P STYLE="margin-bottom: 0cm"></P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">3. Useful commands&nbsp;:</P>
+<P STYLE="margin-bottom: 0cm"><A HREF="http://clang.llvm.org/get_started.html">http://clang.llvm.org/get_started.html</A></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=643 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=255>
+	<COL WIDTH=370>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>clang -E</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border: 1px solid #000000; padding: 0.1cm">
+			<P>preprocess only</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>clang -fsyntax-only</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><FONT FACE="Liberation Serif, serif"><SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">check
+			for correctness, </SPAN></SPAN></FONT></FONT></SPAN><SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">type
+			checking</SPAN></SPAN></FONT></FONT></SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>clang -Xclang -ast-dump -fsyntax-only</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>dump the AST</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P STYLE="margin-bottom: 0cm">clang -cc1 -ast-print</P>
+			<P>clang -S -Xclang -ast-print file.c</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P STYLE="margin-bottom: 0cm">-Pretty printing from the AST to
+			screen</P>
+			<P>-Output to file.s (not assembly but C or C++ code)</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>clang -S -emit-llvm file.c</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>Output <SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>unoptimized</B></SPAN></FONT></FONT></FONT></SPAN><SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT FACE="Lucida Grande, Lucida Sans Unicode, Arial, Verdana, Helvetica, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+			</SPAN></SPAN></FONT></FONT></FONT></SPAN>IR in text format
+			(file.ll) 
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<UL>
+				<P ALIGN=LEFT><TT CLASS="western"><FONT FACE="Liberation Serif, serif">clang
+				-S -emit-llvm -O3</FONT></TT></P>
+			</UL>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>Optimized IR</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>clang -S -O3 file.c</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>Output native machine code (file.s  assembly code)</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>llc foo.ll 
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>To compile LLVM IR further to assembly, use the llc tool</P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">-cc1      Compiler front-end, and not
+the driver, should be run</P>
+<P STYLE="margin-bottom: 0cm">             The 'clang' driver is
+designed to work as closely to GCC as possible to maximize
+portability</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">-S                               Only
+run preprocess and compilation steps (noLinking)</P>
+<P STYLE="margin-bottom: 0cm">-c                               Only
+run preprocess, compile, and assemble steps</P>
+<P STYLE="margin-bottom: 0cm">-Xclang &lt;arg&gt;           Pass
+&lt;arg&gt; to the clang compiler</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+</BODY>
+</HTML>
