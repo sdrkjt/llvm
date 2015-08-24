@@ -5,7 +5,7 @@
 	<TITLE></TITLE>
 	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
 	<META NAME="CREATED" CONTENT="20150817;7405700">
-	<META NAME="CHANGED" CONTENT="20150817;23335100">
+	<META NAME="CHANGED" CONTENT="20150824;6545400">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { margin: 2cm }
@@ -17,7 +17,10 @@
 	</STYLE>
 </HEAD>
 <BODY LANG="fr-FR" DIR="LTR">
-<P STYLE="margin-bottom: 0cm">****************************17/08/2015*****************************************</P>
+<P STYLE="margin-bottom: 0cm; background: transparent"><FONT COLOR="#000000"><SPAN STYLE="background: transparent">****************************17/08/2015*****************************************</SPAN></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM Clang</B></FONT></P>
+<P STYLE="margin-bottom: 0cm"><IMG SRC="LLVMCompiler1.png" NAME="images1" ALIGN=LEFT WIDTH=558 HEIGHT=206 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
 <P STYLE="margin-bottom: 0cm">1. LLVM FrontEnd&nbsp;: 
 </P>
 <UL>
@@ -54,8 +57,9 @@
 			<P>clang -fsyntax-only</P>
 		</TD>
 		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><FONT FACE="Liberation Serif, serif"><SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">check
-			for correctness, type checking</SPAN></SPAN></FONT></FONT></SPAN></FONT></P>
+			<P STYLE="font-variant: normal; font-style: normal; font-weight: normal">
+			<FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3>check
+			for correctness, type checking</FONT></FONT></FONT></P>
 		</TD>
 	</TR>
 	<TR VALIGN=TOP>
@@ -68,11 +72,12 @@
 	</TR>
 	<TR VALIGN=TOP>
 		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -cc1 -ast-print</P>
+			<P STYLE="margin-bottom: 0.5cm">clang -cc1 -ast-print</P>
 			<P>clang -S -Xclang -ast-print file.c</P>
 		</TD>
 		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>-Pretty printing from the AST to screen</P>
+			<P STYLE="margin-bottom: 0.5cm">-Pretty printing from the AST to
+			screen</P>
 			<P>-Output to file.s (not assembly but C or C++ code)</P>
 		</TD>
 	</TR>
@@ -121,6 +126,25 @@
 			<P>To compile LLVM IR further to assembly, use the llc tool</P>
 		</TD>
 	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 HEIGHT=59 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P STYLE="margin-bottom: 0.5cm">llvm-as work.ll -o work.bc</P>
+			<P>llvm-dis work.bc 
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P STYLE="margin-bottom: 0.5cm">.ll to .bc (bitcode)</P>
+			<P>.bc to .ll</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>llvm-nm work.bc</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>Name demangling</P>
+		</TD>
+	</TR>
 </TABLE>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
@@ -138,6 +162,27 @@ steps (noLinking)</P>
 assemble steps</P>
 <P STYLE="margin-bottom: 0cm">-Xclang &lt;arg&gt; Pass &lt;arg&gt; to
 the clang compiler</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************20/08/2015*****************************************</P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM <SPAN LANG="en-US">Language</SPAN></B></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">LLVM's reference doc (IR language):
+<A HREF="http://llvm.org/docs/LangRef.html#llvm-lifetime-start-intrinsic">http://llvm.org/docs/LangRef.html</A></P>
+<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">LLVM’s Analysis
+and Transform Passes: <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
+<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">aosabook:
+<A HREF="http://www.aosabook.org/en/llvm.html">http://www.aosabook.org/en/llvm.html</A></SPAN></FONT></P>
+<P>LLVM Toolset <A HREF="http://www.linux.org/threads/llvm-toolset.6644/">http://www.linux.org/threads/llvm-toolset.6644/</A></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
 </BODY>
