@@ -5,7 +5,7 @@
 	<TITLE></TITLE>
 	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
 	<META NAME="CREATED" CONTENT="20150817;7405700">
-	<META NAME="CHANGED" CONTENT="20150824;6545400">
+	<META NAME="CHANGED" CONTENT="20150824;23481000">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { margin: 2cm }
@@ -172,14 +172,189 @@ the clang compiler</P>
 </P>
 <P STYLE="margin-bottom: 0cm">LLVM's reference doc (IR language):
 <A HREF="http://llvm.org/docs/LangRef.html#llvm-lifetime-start-intrinsic">http://llvm.org/docs/LangRef.html</A></P>
-<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">LLVM’s Analysis
-and Transform Passes: <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
 <P><FONT SIZE=3><SPAN STYLE="font-weight: normal">aosabook:
 <A HREF="http://www.aosabook.org/en/llvm.html">http://www.aosabook.org/en/llvm.html</A></SPAN></FONT></P>
 <P>LLVM Toolset <A HREF="http://www.linux.org/threads/llvm-toolset.6644/">http://www.linux.org/threads/llvm-toolset.6644/</A></P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
+<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************24/08/2015*****************************************</P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM
+<SPAN LANG="en-US">Optimization</SPAN></B></FONT></P>
+<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">LLVM’s Analysis
+and Transform Passes         : <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Writing
+An LLVM Pass                                   :
+</SPAN></FONT><A HREF="http://llvm.org/docs/WritingAnLLVMPass.html"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://llvm.org/docs/WritingAnLLVMPass.html</SPAN></FONT></A></P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">SSA
+enables compiler optimization algorithms :
+</SPAN></FONT><A HREF="https://en.wikipedia.org/wiki/Static_single_assignment_form"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://en.wikipedia.org/wiki/Static_single_assignment_form</SPAN></FONT></A></P>
 <P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=643 CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=255>
+	<COL WIDTH=370>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>opt -S -O3 slow.ll -o fast.ll</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border: 1px solid #000000; padding: 0.1cm">
+			<P>-S: (.ll|.bc) to .ll</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>opt -O3 slow.bc -o fast.bc</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P STYLE="font-variant: normal; font-style: normal; font-weight: normal">
+			<FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3>Without
+			-S: (.ll|.bc) to .bc</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>opt -S -O3 -debug slow.ll -o fast.ll</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P>debug printouts from passes which use the DEBUG() macro</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>-constprop</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P>-ipconstprop</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P ALIGN=LEFT><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 HEIGHT=59 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0 STYLE="page-break-inside: avoid">
+	<COL WIDTH=128*>
+	<COL WIDTH=128*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50% STYLE="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=50% STYLE="border: 1px double #808080; padding: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR><BR>
 </P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
