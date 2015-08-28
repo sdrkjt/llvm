@@ -5,7 +5,7 @@
 	<TITLE></TITLE>
 	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
 	<META NAME="CREATED" CONTENT="20150817;7405700">
-	<META NAME="CHANGED" CONTENT="20150824;23481000">
+	<META NAME="CHANGED" CONTENT="20150828;18411000">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { margin: 2cm }
@@ -142,7 +142,7 @@
 			<P>llvm-nm work.bc</P>
 		</TD>
 		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>Name demangling</P>
+			<P>Name demangling, doesn't work with C++</P>
 		</TD>
 	</TR>
 </TABLE>
@@ -181,13 +181,12 @@ the clang compiler</P>
 <P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM
 <SPAN LANG="en-US">Optimization</SPAN></B></FONT></P>
 <P><FONT SIZE=3><SPAN STYLE="font-weight: normal">LLVM’s Analysis
-and Transform Passes         : <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
+and Transform Passes : <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
 <P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Writing
-An LLVM Pass                                   :
-</SPAN></FONT><A HREF="http://llvm.org/docs/WritingAnLLVMPass.html"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://llvm.org/docs/WritingAnLLVMPass.html</SPAN></FONT></A></P>
+An LLVM Pass : <A HREF="http://llvm.org/docs/WritingAnLLVMPass.html">http://llvm.org/docs/WritingAnLLVMPass.html</A></SPAN></FONT></P>
 <P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">SSA
 enables compiler optimization algorithms :
-</SPAN></FONT><A HREF="https://en.wikipedia.org/wiki/Static_single_assignment_form"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://en.wikipedia.org/wiki/Static_single_assignment_form</SPAN></FONT></A></P>
+<A HREF="https://en.wikipedia.org/wiki/Static_single_assignment_form">https://en.wikipedia.org/wiki/Static_single_assignment_form</A></SPAN></FONT></P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
 <TABLE WIDTH=643 CELLPADDING=4 CELLSPACING=0>
@@ -258,27 +257,7 @@ enables compiler optimization algorithms :
 		</TD>
 	</TR>
 	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 HEIGHT=59 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+		<TD WIDTH=255 HEIGHT=29 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
 			<P><BR>
 			</P>
 		</TD>
@@ -300,65 +279,38 @@ enables compiler optimization algorithms :
 </TABLE>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
-<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0 STYLE="page-break-inside: avoid">
-	<COL WIDTH=128*>
-	<COL WIDTH=128*>
-	<TR VALIGN=TOP>
-		<TD WIDTH=50% STYLE="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=50% STYLE="border: 1px double #808080; padding: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=50% STYLE="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-</TABLE>
+<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************28/08/2015*****************************************</P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>Builtin &amp;
+Attribute</B></FONT></P>
+<P STYLE="margin-bottom: 0cm">Attribute:  
+<A HREF="https://en.wikipedia.org/wiki/Attribute_(computing)">https://en.wikipedia.org/wiki/Attribute_(computing)</A></P>
+<P STYLE="margin-bottom: 0cm">Clang Builtin&amp;Attribute Extensions
+(not available in GCC):
+<A HREF="http://clang.llvm.org/docs/LanguageExtensions.html">http://clang.llvm.org/docs/LanguageExtensions.html</A></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Step by Step&nbsp;to Creat a builtin
+Function using __attribute__&nbsp;: __attribute__TOTO(ID)</P>
+<P STYLE="margin-bottom: 0cm">1. Add definition in :
+tools/clang/include/clang/Basic/Attr.td</P>
+<P STYLE="margin-bottom: 0cm">2. Creat a Handler&nbsp;in :
+tools/clang/lib/Sema/SemaDeclAttr.cpp</P>
+<P STYLE="margin-bottom: 0cm">3. Add builtin definition for IR&nbsp;:
+include/llvm/IR/Intrinsics.td</P>
+<P STYLE="margin-bottom: 0cm">4. CodeGen&nbsp;:
+tools/clang/lib/CodeGen/CodeGenFunction.cpp</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Step by Step&nbsp;to Creat a builtin
+Function using __builtin__&nbsp;: X __builtin__TOTO( Y arg1, Z arg2,
+…)</P>
+<P STYLE="margin-bottom: 0cm">1. Add definition in :
+tools/clang/include/clang/Basic/Builtins.def</P>
+<P STYLE="margin-bottom: 0cm">2. Add builtin definition for IR&nbsp;:
+include/llvm/IR/Intrinsics.td</P>
+<P STYLE="margin-bottom: 0cm">3. CodeGen&nbsp;EmitBuiltinExpr&nbsp;:
+tools/clang/lib/CodeGen/CGBuiltin.cpp</P>
 <P><BR><BR>
-</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm"><BR>
 </P>
 </BODY>
 </HTML>
