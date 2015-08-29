@@ -1,19 +1,23 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
 	<TITLE></TITLE>
-	<META NAME="GENERATOR" CONTENT="LibreOffice 3.5  (Linux)">
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
 	<META NAME="CREATED" CONTENT="20090519;10431200">
+	<META NAME="CHANGED" CONTENT="20150829;21020200">
 	<META NAME="CHANGEDBY" CONTENT="TrungDung Nguyen">
-	<META NAME="CHANGED" CONTENT="20150428;13440000">
 	<META NAME="CHANGEDBY" CONTENT="TrungDung Nguyen">
 	<STYLE TYPE="text/css">
 	<!--
-		@page { margin: 0.79in }
-		P { margin-bottom: 0.04in }
+		@page { margin: 2.01cm }
+		TD P { margin-bottom: 0.1cm }
+		P { margin-bottom: 0.1cm }
 		H3.cjk { font-family: "WenQuanYi Micro Hei" }
 		H3.ctl { font-family: "Lohit Hindi" }
+		PRE.ctl { font-family: "Lohit Hindi", monospace }
+		H4.ctl { font-family: "Lohit Hindi" }
+		CODE.ctl { font-family: "Lohit Hindi", monospace }
 	-->
 	</STYLE>
 </HEAD>
@@ -32,7 +36,7 @@ the output according to <A HREF="http://en.wikipedia.org/wiki/Assembler_%28compu
 and <A HREF="http://en.wikipedia.org/wiki/Linker_%28computing%29">linker</A>
 conventions. A compiler consists of:</P>
 <UL>
-	<LI><P STYLE="margin-bottom: 0in"><I>The front end</I>: Verifies
+	<LI><P STYLE="margin-bottom: 0cm"><I>The front end</I>: Verifies
 	syntax and semantics, and generates an <I>intermediate
 	representation</I> or <I>IR</I> of the source code for processing by
 	the middle-end. Performs <A HREF="http://en.wikipedia.org/wiki/Type_checking">type
@@ -40,7 +44,7 @@ conventions. A compiler consists of:</P>
 	warning, if any, in a useful way. Aspects of the front end include
 	lexical analysis, syntax analysis, and semantic analysis. 
 	</P>
-	<LI><P STYLE="margin-bottom: 0in"><I>The middle end</I>: Performs
+	<LI><P STYLE="margin-bottom: 0cm"><I>The middle end</I>: Performs
 	optimizations, including removal of useless or unreachable code,
 	discovery and propagation of constant values, relocation of
 	computation to a less frequently executed place (e.g., out of a
@@ -60,9 +64,11 @@ conventions. A compiler consists of:</P>
 </UL>
 <P><BR><BR>
 </P>
-<P><IMG SRC="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Compiler.svg/800px-Compiler.svg.png" NAME="graphics1" ALIGN=BOTTOM WIDTH=678 HEIGHT=623 BORDER=0></P>
-<P><IMG SRC="http://upload.wikimedia.org/wikipedia/commons/5/5b/Xxx_Scanner_and_parser_example_for_C.gif" NAME="graphics2" ALIGN=BOTTOM WIDTH=678 HEIGHT=674 BORDER=0></P>
-<H3 CLASS="western"><A NAME="Back_end"></A><B>Back end</B></H3>
+<P><IMG SRC="800px-Compiler.svg.png" NAME="images1" ALIGN=LEFT WIDTH=567 HEIGHT=640 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western"><IMG SRC="Xxx_Scanner_and_parser_example_for_C.gif" NAME="images2" ALIGN=LEFT WIDTH=567 HEIGHT=392 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</H3>
+<H3 CLASS="western"><A NAME="Back_end"></A>Back end</H3>
 <P>The term <I>back end</I> is sometimes confused with <A HREF="http://en.wikipedia.org/wiki/Code_generation_%28compiler%29"><I>code
 generator</I></A> because of the overlapped functionality of
 generating assembly code. Some literature uses <I><B>middle end</B></I>
@@ -70,7 +76,7 @@ to distinguish the generic analysis and optimization phases in the
 back end from the machine-dependent code generators.</P>
 <P>The main phases of the back end include the following:</P>
 <OL>
-	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://en.wikipedia.org/wiki/Compiler_analysis">Analysis</A>:
+	<LI><P STYLE="margin-bottom: 0cm"><A HREF="http://en.wikipedia.org/wiki/Compiler_analysis">Analysis</A>:
 	This is the gathering of program information from the intermediate
 	representation derived from the input; <A HREF="http://en.wikipedia.org/wiki/Data-flow_analysis">data-flow
 	analysis</A> is used to build <A HREF="http://en.wikipedia.org/wiki/Use-define_chain">use-define
@@ -83,7 +89,7 @@ back end from the machine-dependent code generators.</P>
 	graph</A> and <A HREF="http://en.wikipedia.org/wiki/Control_flow_graph">control
 	flow graph</A> are usually also built during the analysis phase. 
 	</P>
-	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://en.wikipedia.org/wiki/Compiler_optimization">Optimization</A>:
+	<LI><P STYLE="margin-bottom: 0cm"><A HREF="http://en.wikipedia.org/wiki/Compiler_optimization">Optimization</A>:
 	the intermediate language representation is transformed into
 	functionally equivalent but faster (or smaller) forms. Popular
 	optimizations are <A HREF="http://en.wikipedia.org/wiki/Inline_expansion">inline
@@ -139,10 +145,10 @@ interface</A></SPAN></P>
 <P><SPAN STYLE="font-weight: normal">When it comes to implementing a
 language, the first thing needed is the ability to process a text
 file and recognize what it says. The traditional way to do this is to
-use a &ldquo;<A HREF="http://en.wikipedia.org/wiki/Lexical_analysis">lexer</A>&rdquo;
-(aka &lsquo;scanner&rsquo;) to break the input up into &ldquo;tokens&rdquo;.
-Each token returned by the lexer includes a token code and
-potentially some metadata (e.g. the numeric value of a number).</SPAN></P>
+use a “<A HREF="http://en.wikipedia.org/wiki/Lexical_analysis">lexer</A>”
+(aka ‘scanner’) to break the input up into “tokens”. Each
+token returned by the lexer includes a token code and potentially
+some metadata (e.g. the numeric value of a number).</SPAN></P>
 <P><A HREF="http://llvm.org/docs/tutorial/OCamlLangImpl1.html">http://llvm.org/docs/tutorial/OCamlLangImpl1.html</A></P>
 <P><BR><BR>
 </P>
@@ -153,11 +159,11 @@ LLVM</FONT></H1>
 </P>
 <P>To summarize, the steps are as follows:</P>
 <OL>
-	<LI><P STYLE="margin-bottom: 0in"><STRONG>Lexical Analysis with
+	<LI><P STYLE="margin-bottom: 0cm"><STRONG>Lexical Analysis with
 	</STRONG><STRONG><EM>Flex</EM></STRONG>: Split input data into a set
 	of tokens (identifiers, keywords, numbers, brackets, braces, etc.) 
 	</P>
-	<LI><P STYLE="margin-bottom: 0in"><STRONG>Semantic Parsing with
+	<LI><P STYLE="margin-bottom: 0cm"><STRONG>Semantic Parsing with
 	</STRONG><STRONG><EM>Bison</EM></STRONG>: Generate an AST while
 	parsing the tokens. Bison will do most of the legwork here, we just
 	need to define our AST. 
@@ -168,8 +174,8 @@ LLVM</FONT></H1>
 	step. 
 	</P>
 </OL>
-<P>This means all we&rsquo;re really doing is translating from one
-AST to another</P>
+<P>This means all we’re really doing is translating from one AST to
+another</P>
 <P><BR><BR>
 </P>
 <P>$ bison -d -o parser.cpp parser.y</P>
@@ -180,50 +186,48 @@ AST to another</P>
 </P>
 <P STYLE="page-break-before: always">********************15/04/2015****************************</P>
 <P><B>BYTECODE</B></P>
-<P>-Un code <B>interm&eacute;diaire</B> entre les instructions
-machines et le code source, il n'est pas directement ex&eacute;cutable.
-Le bytecode peut &ecirc;tre cr&eacute;&eacute; &agrave; la vol&eacute;e
-et r&eacute;sider en m&eacute;moire (<A HREF="http://fr.wikipedia.org/wiki/Compilation_&agrave;_la_vol&eacute;e">compilation
-&agrave; la vol&eacute;e</A>, JIT en anglais) ou bien r&eacute;sider
-dans un fichier, g&eacute;n&eacute;ralement binaire qui repr&eacute;sente
-le programme, tout comme un fichier de <A HREF="http://fr.wikipedia.org/wiki/Code_objet">code
+<P>-Un code <B>intermédiaire</B> entre les instructions machines et
+le code source, il n'est pas directement exécutable. Le bytecode
+peut être créé à la volée et résider en mémoire (<A HREF="http://fr.wikipedia.org/wiki/Compilation_à_la_volée">compilation
+à la volée</A>, JIT en anglais) ou bien résider dans un fichier,
+généralement binaire qui représente le programme, tout comme un
+fichier de <A HREF="http://fr.wikipedia.org/wiki/Code_objet">code
 objet</A> (e.g.: .o, .obj, .pyc) produit par un compilateur.</P>
-<P>-Il est appel&eacute; <I>bytecode</I> du fait de son format o&ugrave;
-chaque instruction est cod&eacute;e en <SPAN STYLE="text-decoration: none">binaire</SPAN>.</P>
-<P>-La <B>portabilit&eacute; </B>: le m&ecirc;me <I>bytecode</I> peut
-&ecirc;tre ex&eacute;cut&eacute; sur diverses plates<A HREF="http://fr.wikipedia.org/wiki/Plate-forme_%28informatique%29">-</A>formes
-ou architectures pour lesquelles un interpr&eacute;teur existe</P>
-<P>Les performances des interpr&eacute;teurs de <I>bytecode</I> sont
-g&eacute;n&eacute;ralement bien meilleures que celles des
-interpr&eacute;teurs de scripts</P>
-<P>De nombreux langages interpr&eacute;t&eacute;s sont en fait
-compil&eacute;s en <I>bytecode</I> avant d'&ecirc;tre ex&eacute;cut&eacute;s
-par un interpr&eacute;teur de <I>bytecode</I>: e.g. Python</P>
+<P>-Il est appelé <I>bytecode</I> du fait de son format où chaque
+instruction est codée en <SPAN STYLE="text-decoration: none">binaire</SPAN>.</P>
+<P>-La <B>portabilité </B>: le même <I>bytecode</I> peut être
+exécuté sur diverses plates<A HREF="http://fr.wikipedia.org/wiki/Plate-forme_%28informatique%29">-</A>formes
+ou architectures pour lesquelles un interpréteur existe</P>
+<P>Les performances des interpréteurs de <I>bytecode</I> sont
+généralement bien meilleures que celles des interpréteurs de
+scripts</P>
+<P>De nombreux langages interprétés sont en fait compilés en
+<I>bytecode</I> avant d'être exécutés par un interpréteur de
+<I>bytecode</I>: e.g. Python</P>
 <P>-Certains compilateurs, comme <A HREF="http://fr.wikipedia.org/wiki/LLVM">LLVM</A>,
-utilisent le <I>bytecode</I> comme <A HREF="http://fr.wikipedia.org/wiki/Repr&eacute;sentation_interm&eacute;diaire">repr&eacute;sentation
-interm&eacute;diaire</A> avant la transformation en code machine vers
+utilisent le <I>bytecode</I> comme <A HREF="http://fr.wikipedia.org/wiki/Représentation_intermédiaire">représentation
+intermédiaire</A> avant la transformation en code machine vers
 l'architecture cible</P>
 <P>-<I><B>JIT</B></I><I>: </I>traduise le <I>bytecode</I> en code
-machine au fur et &agrave; mesure de l&rsquo;ex&eacute;cution, cela
-permet d&rsquo;acc&eacute;l&eacute;rer l&rsquo;ex&eacute;cution sur
-les boucles ou les fonctions appel&eacute;es plusieurs fois tout en
-&eacute;vitant de stocker sur disque ou de transf&eacute;rer via les
-r&eacute;seaux des donn&eacute;es pr&eacute;compil&eacute;es</P>
+machine au fur et à mesure de l’exécution, cela permet
+d’accélérer l’exécution sur les boucles ou les fonctions
+appelées plusieurs fois tout en évitant de stocker sur disque ou de
+transférer via les réseaux des données précompilées</P>
 <P><BR><BR>
 </P>
 <P><B>INTERPRETE</B></P>
-<P>-La plupart des interpr&egrave;tes utilisent des repr&eacute;sentations
-internes interm&eacute;diaires (arbres syntaxiques abstraits, ou m&ecirc;me
-code octet) et des traitements (analyses lexicale et syntaxique)
-ressemblant &agrave; ceux des compilateurs</P>
+<P>-La plupart des interprètes utilisent des représentations
+internes intermédiaires (arbres syntaxiques abstraits, ou même code
+octet) et des traitements (analyses lexicale et syntaxique)
+ressemblant à ceux des compilateurs</P>
 <P>-Un certain nombre de langages informatiques sont aujourd'hui mis
-en &oelig;uvre au moyen d'une <A HREF="http://fr.wikipedia.org/wiki/Machine_virtuelle_%28informatique%29">machine
-virtuelle</A> applicative. Cette technique est &agrave; <I><U>mi-chemin
-entre les interpr&egrave;tes tels que d&eacute;crits ici et les
-compilateurs</U></I>. Elle offre la portabilit&eacute; des
-interpr&egrave;tes avec une bonne efficacit&eacute;. Par exemple, des
-portages de <I>Java, Lisp, Scheme, Ocaml, Perl (Parrot), Python,
-Ruby, Lua, C#,</I> etc. sont faits <I>via</I> une machine virtuelle.</P>
+en œuvre au moyen d'une <A HREF="http://fr.wikipedia.org/wiki/Machine_virtuelle_%28informatique%29">machine
+virtuelle</A> applicative. Cette technique est à <I><U>mi-chemin
+entre les interprètes tels que décrits ici et les compilateurs</U></I>.
+Elle offre la portabilité des interprètes avec une bonne
+efficacité. Par exemple, des portages de <I>Java, Lisp, Scheme,
+Ocaml, Perl (Parrot), Python, Ruby, Lua, C#,</I> etc. sont faits <I>via</I>
+une machine virtuelle.</P>
 <P><BR><BR>
 </P>
 <P STYLE="page-break-before: always">********************28/04/2015****************************</P>
@@ -258,5 +262,82 @@ the hash function efficiency.&nbsp; High collision rate will increase
 the lookup time.<BR>stl map -&gt; lookup time is O(lg n)<BR>same
 applies for inserts<BR><BR>stl map is good to look up min and max
 values, print values in sorted order and finding the closest element</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P STYLE="page-break-before: always">********************29/08/2015****************************</P>
+<P><FONT COLOR="#0000ff"><FONT SIZE=4><B>C++ 2011 Rvalue &amp; Lvalue</B></FONT></FONT></P>
+<P><FONT COLOR="#0000ff"><FONT SIZE=4><A HREF="http://thbecker.net/articles/rvalue_references/section_01.html"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://thbecker.net/articles/rvalue_references/section_01.html</SPAN></FONT></A></FONT></FONT></P>
+<P><FONT COLOR="#0000ff"><FONT SIZE=4><A HREF="http://thbecker.net/articles/rvalue_references/section_03.html"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://thbecker.net/articles/rvalue_references/section_03.html</SPAN></FONT></A></FONT></FONT></P>
+<H4 CLASS="western" STYLE="font-variant: normal; font-style: normal"><FONT COLOR="#000000"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=3>Rvalue
+References</FONT></FONT></FONT></H4>
+<PRE CLASS="western" STYLE="font-variant: normal; font-style: normal; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>void foo(X&amp; x); // lvalue reference overload</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>void foo(X&amp;&amp; x); // rvalue reference overload</FONT></FONT></FONT>
+
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>X x;</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>X foobar();</FONT></FONT></FONT>
+
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>foo(x); // argument is lvalue: calls foo(X&amp;)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>foo(foobar()); // argument is rvalue: calls foo(X&amp;&amp;)</FONT></FONT></FONT></PRE>
+<TABLE WIDTH=680 CELLPADDING=5 CELLSPACING=1>
+	<COL WIDTH=666>
+	<TR>
+		<TD WIDTH=666 STYLE="border: 1px double #808080; padding: 0.13cm">
+			<P><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2><B>Note:</B>&nbsp;If
+			you implement</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>but not</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>then of
+			course the behavior is unchanged:&nbsp;</FONT></FONT><CODE CLASS="western"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>foo</FONT></FONT></CODE><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>&nbsp;can
+			be called on l-values, but not on r-values. If you implement</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X const &amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>but not</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>then again,
+			the behavior is unchanged:&nbsp;</FONT></FONT><CODE CLASS="western"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>foo</FONT></FONT></CODE><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>&nbsp;can
+			be called on l-values and r-values, but it is not possible to make
+			it distinguish between l-values and r-values. That is possible
+			only by implementing</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>as well.
+			Finally, if you implement</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>but neither
+			one of</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X&amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>and</FONT></FONT></P>
+			<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>void foo(X const &amp;);</FONT></FONT></PRE><P>
+			<FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>then,
+			according to the final version of C++11,&nbsp;</FONT></FONT><CODE CLASS="western"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>foo</FONT></FONT></CODE><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=2>&nbsp;can
+			be called on r-values, but trying to call it on an l-value will
+			trigger a compile error.</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<PRE CLASS="western" STYLE="font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=3><U>Assignment operators</U></FONT></FONT></FONT>
+
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>X&amp; X::operator=(X const &amp; rhs); // classical implementation</FONT></FONT></FONT>
+<A NAME="assignment_op"></A><FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>X&amp; X::operator=(X&amp;&amp; rhs)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>{</FONT></FONT></FONT>
+<FONT COLOR="#000000">  <FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">// Move semantics: exchange content between this and rhs</SPAN></SPAN></FONT></FONT></FONT>
+<FONT COLOR="#000000">  <FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">return *this;</SPAN></SPAN></FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>}</FONT></FONT></FONT></PRE><P STYLE="font-variant: normal; font-style: normal">
+<FONT COLOR="#000000"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=3><U><SPAN STYLE="font-weight: normal">Implementing
+an rvalue reference overload for the copy constructor is similar.</SPAN></U></FONT></FONT></FONT></P>
+<PRE CLASS="western">
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>Base(Base const &amp; rhs); // non-move semantics</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="DejaVu Sans Mono, monospace"><FONT SIZE=2>Base(Base&amp;&amp; rhs); // move semantics</FONT></FONT></FONT></PRE><H4 CLASS="western" STYLE="font-variant: normal; font-style: normal">
+<FONT COLOR="#000000"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=3>Forcing
+Move Semantics</FONT></FONT></FONT></H4>
+<PRE CLASS="western" STYLE="font-variant: normal"><FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">T tmp(std::move(a));</SPAN></SPAN></FONT></FONT>
+<FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">a = std::move(b); </SPAN></SPAN></FONT></FONT>
+<FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">b = std::move(tmp);</SPAN></SPAN></FONT></FONT></PRE><P>
+<BR><BR>
+</P>
+<P><BR><BR>
+</P>
 </BODY>
 </HTML>
