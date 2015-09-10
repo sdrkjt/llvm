@@ -1,316 +1,404 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-	<TITLE></TITLE>
-	<META NAME="GENERATOR" CONTENT="LibreOffice 4.0.2.2 (Linux)">
-	<META NAME="CREATED" CONTENT="20150817;7405700">
-	<META NAME="CHANGED" CONTENT="20150828;18411000">
-	<STYLE TYPE="text/css">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
+	<meta name="created" content="20150817;7405700">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changed" content="20150910;222255069101574">
+	<style type="text/css">
 	<!--
-		@page { margin: 2cm }
-		TD P { margin-bottom: 0cm }
-		P { margin-bottom: 0.21cm }
-		A:link { so-language: zxx }
-		TT.ctl { font-family: "Lohit Hindi", monospace }
+		@page { margin: 0.79in }
+		td p { margin-bottom: 0in; color: #000000 }
+		p { margin-bottom: 0.08in; color: #000000 }
+		pre { color: #000000 }
+		pre.cjk { font-family: "Droid Sans Fallback", monospace }
+		a:link { so-language: zxx }
+		tt.cjk { font-family: "Droid Sans Fallback", monospace }
+		tt.ctl { font-family: "Lohit Hindi", monospace }
 	-->
-	</STYLE>
-</HEAD>
-<BODY LANG="fr-FR" DIR="LTR">
-<P STYLE="margin-bottom: 0cm; background: transparent"><FONT COLOR="#000000"><SPAN STYLE="background: transparent">****************************17/08/2015*****************************************</SPAN></FONT></P>
-<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM Clang</B></FONT></P>
-<P STYLE="margin-bottom: 0cm"><IMG SRC="LLVMCompiler1.png" NAME="images1" ALIGN=LEFT WIDTH=558 HEIGHT=206 BORDER=0><BR CLEAR=LEFT><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">1. LLVM FrontEnd&nbsp;: 
-</P>
-<UL>
-	<LI><P STYLE="margin-bottom: 0cm">lexical-syntax-semantic, output
-	AST</P>
-	<LI><P STYLE="margin-bottom: 0cm">AST → CodeGen → IR (.ll)</P>
-</UL>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">2. MiddleEnd&nbsp;:</P>
-<UL>
-	<LI><P STYLE="margin-bottom: 0cm">.ll → Optimization → .ll</P>
-	<LI><P></P>
-</UL>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">3. Useful commands&nbsp;:</P>
-<P STYLE="margin-bottom: 0cm"><A HREF="http://clang.llvm.org/get_started.html">http://clang.llvm.org/get_started.html</A></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<TABLE WIDTH=643 CELLPADDING=4 CELLSPACING=0>
-	<COL WIDTH=255>
-	<COL WIDTH=370>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -E</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border: 1px solid #000000; padding: 0.1cm">
-			<P>preprocess only</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -fsyntax-only</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P STYLE="font-variant: normal; font-style: normal; font-weight: normal">
-			<FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3>check
-			for correctness, type checking</FONT></FONT></FONT></P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -Xclang -ast-dump -fsyntax-only</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>dump the AST</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P STYLE="margin-bottom: 0.5cm">clang -cc1 -ast-print</P>
-			<P>clang -S -Xclang -ast-print file.c</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P STYLE="margin-bottom: 0.5cm">-Pretty printing from the AST to
-			screen</P>
-			<P>-Output to file.s (not assembly but C or C++ code)</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -S -emit-llvm file.c</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>Output <SPAN STYLE="font-variant: normal"><FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>unoptimized</B></SPAN></FONT></FONT></FONT></SPAN><SPAN STYLE="font-variant: normal"><FONT COLOR="#222222">
-			</FONT></SPAN>IR in text format (file.ll) 
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P ALIGN=LEFT><TT CLASS="western"><FONT FACE="Liberation Serif, serif">clang
-			-S -emit-llvm -O3</FONT></TT></P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>Optimized IR</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>clang -S -O3 file.c</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>Output native machine code (file.s assembly code)</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>llc -march=cpp -o code.cpp work.ll 
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>.ll to cpp</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>llc foo.ll 
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>To compile LLVM IR further to assembly, use the llc tool</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 HEIGHT=59 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P STYLE="margin-bottom: 0.5cm">llvm-as work.ll -o work.bc</P>
-			<P>llvm-dis work.bc 
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P STYLE="margin-bottom: 0.5cm">.ll to .bc (bitcode)</P>
-			<P>.bc to .ll</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>llvm-nm work.bc</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>Name demangling, doesn't work with C++</P>
-		</TD>
-	</TR>
-</TABLE>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">-cc1 Compiler front-end, and not the
-driver, should be run</P>
-<P STYLE="margin-bottom: 0cm">The 'clang' driver is designed to work
-as closely to GCC as possible to maximize portability</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">-S Only run preprocess and compilation
-steps (noLinking)</P>
-<P STYLE="margin-bottom: 0cm">-c Only run preprocess, compile, and
-assemble steps</P>
-<P STYLE="margin-bottom: 0cm">-Xclang &lt;arg&gt; Pass &lt;arg&gt; to
-the clang compiler</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************20/08/2015*****************************************</P>
-<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM <SPAN LANG="en-US">Language</SPAN></B></FONT></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">LLVM's reference doc (IR language):
-<A HREF="http://llvm.org/docs/LangRef.html#llvm-lifetime-start-intrinsic">http://llvm.org/docs/LangRef.html</A></P>
-<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">aosabook:
-<A HREF="http://www.aosabook.org/en/llvm.html">http://www.aosabook.org/en/llvm.html</A></SPAN></FONT></P>
-<P>LLVM Toolset <A HREF="http://www.linux.org/threads/llvm-toolset.6644/">http://www.linux.org/threads/llvm-toolset.6644/</A></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************24/08/2015*****************************************</P>
-<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>LLVM
-<SPAN LANG="en-US">Optimization</SPAN></B></FONT></P>
-<P><FONT SIZE=3><SPAN STYLE="font-weight: normal">LLVM’s Analysis
-and Transform Passes : <A HREF="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</A></SPAN></FONT></P>
-<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Writing
-An LLVM Pass : <A HREF="http://llvm.org/docs/WritingAnLLVMPass.html">http://llvm.org/docs/WritingAnLLVMPass.html</A></SPAN></FONT></P>
-<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><SPAN STYLE="font-weight: normal">SSA
+	</style>
+</head>
+<body lang="fr-FR" text="#000000" dir="ltr" style="background: transparent">
+<p style="margin-bottom: 0in; background: transparent"><span style="background: transparent">****************************17/08/2015*****************************************</span></p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>LLVM Clang</b></font></p>
+<p style="margin-bottom: 0in"><img src="data:image/png;base64,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" name="images1" align="left" width="558" height="206" border="0"><br clear="left"><br>
+</p>
+<p style="margin-bottom: 0in">1. LLVM FrontEnd&nbsp;: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in">lexical-syntax-semantic, output
+	AST</p>
+	<li><p style="margin-bottom: 0in">AST → CodeGen → IR (.ll)</p>
+</ul>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">2. MiddleEnd&nbsp;:</p>
+<ul>
+	<li><p style="margin-bottom: 0in">.ll → Optimization → .ll</p>
+	<li><p></p>
+</ul>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">3. Useful commands&nbsp;:</p>
+<p style="margin-bottom: 0in"><a href="http://clang.llvm.org/get_started.html">http://clang.llvm.org/get_started.html</a></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<table width="643" cellpadding="4" cellspacing="0">
+	<col width="255">
+	<col width="370">
+	<tr valign="top">
+		<td width="255" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>clang -E</p>
+		</td>
+		<td width="370" style="border: 1px solid #000000; padding: 0.04in">
+			<p>preprocess only</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>clang -fsyntax-only</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-variant: normal; font-style: normal; font-weight: normal">
+			<font color="#222222"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt">check
+			for correctness, type checking</font></font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>clang -Xclang -ast-dump -fsyntax-only</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>dump the AST</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="margin-bottom: 0.2in">clang -cc1 -ast-print</p>
+			<p>clang -S -Xclang -ast-print file.c</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="margin-bottom: 0.2in">-Pretty printing from the AST to
+			screen</p>
+			<p>-Output to file.s (not assembly but C or C++ code)</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>clang -S -emit-llvm file.c</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>Output <span style="font-variant: normal"><font color="#222222"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><b>unoptimized</b></span></font></font></font></span><span style="font-variant: normal"><font color="#222222">
+			</font></span>IR in text format (file.ll) 
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p align="left"><tt class="western"><font face="Liberation Serif, serif">clang
+			-S -emit-llvm -O3</font></tt></p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>Optimized IR</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>clang -S -O3 file.c</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>Output native machine code (file.s assembly code)</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>llc -march=cpp -o code.cpp work.ll 
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>.ll to cpp Backend, see llc --version 
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>llc foo.ll 
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>To compile LLVM IR further to assembly, use the llc tool</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" height="59" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="margin-bottom: 0.2in">llvm-as work.ll -o work.bc</p>
+			<p>llvm-dis work.bc 
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="margin-bottom: 0.2in">.ll to .bc (bitcode)</p>
+			<p>.bc to .ll</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>llvm-nm work.bc</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>Name demangling, doesn't work with C++</p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">-cc1 Compiler front-end, and not the
+driver, should be run</p>
+<p style="margin-bottom: 0in">The 'clang' driver is designed to work
+as closely to GCC as possible to maximize portability</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">-S Only run preprocess and compilation
+steps (noLinking)</p>
+<p style="margin-bottom: 0in">-c Only run preprocess, compile, and
+assemble steps</p>
+<p style="margin-bottom: 0in">-Xclang &lt;arg&gt; Pass &lt;arg&gt; to
+the clang compiler</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************20/08/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>LLVM <span lang="en-US">Language</span></b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">LLVM's reference doc (IR language):
+<a href="http://llvm.org/docs/LangRef.html#llvm-lifetime-start-intrinsic">http://llvm.org/docs/LangRef.html</a></p>
+<p><font size="3" style="font-size: 12pt"><span style="font-weight: normal">aosabook:
+<a href="http://www.aosabook.org/en/llvm.html">http://www.aosabook.org/en/llvm.html</a></span></font></p>
+<p>LLVM Toolset <a href="http://www.linux.org/threads/llvm-toolset.6644/">http://www.linux.org/threads/llvm-toolset.6644/</a></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************24/08/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>LLVM
+<span lang="en-US">Optimization</span></b></font></p>
+<p><font size="3" style="font-size: 12pt"><span style="font-weight: normal">LLVM’s
+Analysis and Transform Passes : <a href="http://llvm.org/docs/Passes.html">http://llvm.org/docs/Passes.html</a></span></font></p>
+<p style="margin-bottom: 0in"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">Writing
+An LLVM Pass : <a href="http://llvm.org/docs/WritingAnLLVMPass.html">http://llvm.org/docs/WritingAnLLVMPass.html</a></span></font></p>
+<p style="margin-bottom: 0in"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">SSA
 enables compiler optimization algorithms :
-<A HREF="https://en.wikipedia.org/wiki/Static_single_assignment_form">https://en.wikipedia.org/wiki/Static_single_assignment_form</A></SPAN></FONT></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<TABLE WIDTH=643 CELLPADDING=4 CELLSPACING=0>
-	<COL WIDTH=255>
-	<COL WIDTH=370>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>opt -S -O3 slow.ll -o fast.ll</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border: 1px solid #000000; padding: 0.1cm">
-			<P>-S: (.ll|.bc) to .ll</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>opt -O3 slow.bc -o fast.bc</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P STYLE="font-variant: normal; font-style: normal; font-weight: normal">
-			<FONT COLOR="#222222"><FONT FACE="Liberation Serif, serif"><FONT SIZE=3>Without
-			-S: (.ll|.bc) to .bc</FONT></FONT></FONT></P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>opt -S -O3 -debug slow.ll -o fast.ll</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P>debug printouts from passes which use the DEBUG() macro</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>-constprop</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P>-ipconstprop</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P ALIGN=LEFT><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 HEIGHT=29 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-	<TR VALIGN=TOP>
-		<TD WIDTH=255 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
-			<P><BR>
-			</P>
-		</TD>
-		<TD WIDTH=370 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
-			<P><BR>
-			</P>
-		</TD>
-	</TR>
-</TABLE>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm; page-break-before: always">****************************28/08/2015*****************************************</P>
-<P STYLE="margin-bottom: 0cm"><FONT COLOR="#0000ff"><B>Builtin &amp;
-Attribute</B></FONT></P>
-<P STYLE="margin-bottom: 0cm">Attribute:  
-<A HREF="https://en.wikipedia.org/wiki/Attribute_(computing)">https://en.wikipedia.org/wiki/Attribute_(computing)</A></P>
-<P STYLE="margin-bottom: 0cm">Clang Builtin&amp;Attribute Extensions
+<a href="https://en.wikipedia.org/wiki/Static_single_assignment_form">https://en.wikipedia.org/wiki/Static_single_assignment_form</a></span></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<table width="643" cellpadding="4" cellspacing="0">
+	<col width="255">
+	<col width="370">
+	<tr valign="top">
+		<td width="255" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>opt -S -O3 slow.ll -o fast.ll</p>
+		</td>
+		<td width="370" style="border: 1px solid #000000; padding: 0.04in">
+			<p>-S: (.ll|.bc) to .ll</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>opt -O3 slow.bc -o fast.bc</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-variant: normal; font-style: normal; font-weight: normal">
+			<font color="#222222"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt">Without
+			-S: (.ll|.bc) to .bc</font></font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>opt -S -O3 -debug slow.ll -o fast.ll</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p>debug printouts from passes which use the DEBUG() macro</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>-constprop</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p>-ipconstprop</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p align="left"><br>
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p><br>
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" height="29" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p><br>
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="255" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p><br>
+			</p>
+		</td>
+		<td width="370" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p><br>
+			</p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************28/08/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>Builtin &amp;
+Attribute</b></font></p>
+<p style="margin-bottom: 0in">Attribute:
+<a href="https://en.wikipedia.org/wiki/Attribute_(computing)">https://en.wikipedia.org/wiki/Attribute_(computing)</a></p>
+<p style="margin-bottom: 0in">Clang Builtin&amp;Attribute Extensions
 (not available in GCC):
-<A HREF="http://clang.llvm.org/docs/LanguageExtensions.html">http://clang.llvm.org/docs/LanguageExtensions.html</A></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">Step by Step&nbsp;to Creat a builtin
-Function using __attribute__&nbsp;: __attribute__TOTO(ID)</P>
-<P STYLE="margin-bottom: 0cm">1. Add definition in :
-tools/clang/include/clang/Basic/Attr.td</P>
-<P STYLE="margin-bottom: 0cm">2. Creat a Handler&nbsp;in :
-tools/clang/lib/Sema/SemaDeclAttr.cpp</P>
-<P STYLE="margin-bottom: 0cm">3. Add builtin definition for IR&nbsp;:
-include/llvm/IR/Intrinsics.td</P>
-<P STYLE="margin-bottom: 0cm">4. CodeGen&nbsp;:
-tools/clang/lib/CodeGen/CodeGenFunction.cpp</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm">Step by Step&nbsp;to Creat a builtin
+<a href="http://clang.llvm.org/docs/LanguageExtensions.html">http://clang.llvm.org/docs/LanguageExtensions.html</a></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Step by Step&nbsp;to Creat a builtin
+Function using __attribute__&nbsp;: __attribute__TOTO(ID)</p>
+<p style="margin-bottom: 0in">1. Add definition in :
+tools/clang/include/clang/Basic/Attr.td</p>
+<p style="margin-bottom: 0in">2. Creat a Handler&nbsp;in :
+tools/clang/lib/Sema/SemaDeclAttr.cpp</p>
+<p style="margin-bottom: 0in">3. Add builtin definition for IR&nbsp;:
+include/llvm/IR/Intrinsics.td</p>
+<p style="margin-bottom: 0in">4. CodeGen&nbsp;:
+tools/clang/lib/CodeGen/CodeGenFunction.cpp</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Step by Step&nbsp;to Creat a builtin
 Function using __builtin__&nbsp;: X __builtin__TOTO( Y arg1, Z arg2,
-…)</P>
-<P STYLE="margin-bottom: 0cm">1. Add definition in :
-tools/clang/include/clang/Basic/Builtins.def</P>
-<P STYLE="margin-bottom: 0cm">2. Add builtin definition for IR&nbsp;:
-include/llvm/IR/Intrinsics.td</P>
-<P STYLE="margin-bottom: 0cm">3. CodeGen&nbsp;EmitBuiltinExpr&nbsp;:
-tools/clang/lib/CodeGen/CGBuiltin.cpp</P>
-<P><BR><BR>
-</P>
-</BODY>
-</HTML>
+…)</p>
+<p style="margin-bottom: 0in">1. Add definition in :
+tools/clang/include/clang/Basic/Builtins.def</p>
+<p style="margin-bottom: 0in">2. Add builtin definition for IR&nbsp;:
+include/llvm/IR/Intrinsics.td</p>
+<p style="margin-bottom: 0in">3. CodeGen&nbsp;EmitBuiltinExpr&nbsp;:
+tools/clang/lib/CodeGen/CGBuiltin.cpp</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************08/09/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>Source-to-source
+Transformation with CLANG</b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">clang -fms-extensions <b>-rewrite-objc</b>
+-fobjc-runtime=macosx-fragile-10.5 -x objective-c++ -fblocks
+rewrite-function-decl.mm -o – toto.cpp</p>
+<p style="margin-bottom: 0in">llvm/tools/clang/lib/Frontend/Rewrite/RewriteObjC.cpp</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p><tt class="western"><font face="Liberation Serif, serif"><font size="4" style="font-size: 14pt"><b>clang-modernize</b></font></font></tt></p>
+<p><a href="http://clang.llvm.org/extra/clang-modernize.html">http://clang.llvm.org/extra/clang-modernize.html</a></p>
+<p><b>-emit-ast&nbsp;: .ast in binary format, .ast → .ll</b></p>
+<p>clang -emit-llvm -S -o %t1.ll -x c++ - &lt; ast-main.cpp 
+</p>
+<p>clang -fno-delayed-template-parsing -emit-ast -o %t.ast
+ast-main.cpp 
+</p>
+<p>clang -emit-llvm -S -o %t2.ll -x ast - &lt; %t.ast 
+</p>
+<p>tkdiff %t1.ll %t2.ll 
+</p>
+<p><b>clang-check</b> work.cpp -ast-dump --</p>
+<p><a href="http://eli.thegreenplace.net/2014/05/21/compilation-databases-for-clang-based-tools">http://eli.thegreenplace.net/2014/05/21/compilation-databases-for-clang-based-tools</a></p>
+<p>generate this database easily by running CMake with the
+<tt class="western">-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</tt> option</p>
+<p><b>Listing all declarations&nbsp;:</b></p>
+<p style="margin-bottom: 0in">clang-check work.cpp -ast-list -- 
+</p>
+<p style="margin-bottom: 0in">clang-check work.cpp -ast-dump
+-ast-dump-filter myClass::myMethod --</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************09/09/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>Source-to-source
+Transformation with CLANG</b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>-tmp
+explicite&nbsp;: rewrite all tmps</b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><font color="#000000"><font size="3" style="font-size: 12pt"><b>CXXBindTemporaryExpr&nbsp;</b></font></font><font color="#000000"><font size="3" style="font-size: 12pt">:
+</font></font><font color="#000000"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">Represents
+binding an expression to a temporary. This ensures the destructor is
+called for the temporary, for non-POD</span></font></font></p>
+<p style="margin-bottom: 0in"><a href="http://clang.llvm.org/doxygen/classclang_1_1CXXBindTemporaryExpr.html"><font color="#000000"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">http://clang.llvm.org/doxygen/classclang_1_1CXXBindTemporaryExpr.html</span></font></font></font></a></p>
+<p style="margin-bottom: 0in">const S &amp;s_ref = S(); // Requires a
+CXXBindTemporaryExpr</p>
+<pre class="western"><br>
+</pre>
+<p style="margin-bottom: 0in"><b>MaterializeTemporaryExpr&nbsp;:</b></p>
+<p style="margin-bottom: 0in"><a href="http://clang.llvm.org/doxygen/classclang_1_1MaterializeTemporaryExpr.html"><font color="#000000"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">http://clang.llvm.org/doxygen/classclang_1_1MaterializeTemporaryExpr.html</span></font></font></font></a></p>
+<p style="margin-bottom: 0in">const int &amp;r = 1.0;</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>-listing Sig&nbsp;:
+rewrite all declarations at the beginning</b></font></p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>-void for all
+funcs </b></font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************10/09/2015*****************************************</p>
+<p style="margin-bottom: 0in">clang -std=c++11 -Wall -fno-exceptions
+-D__VSR__ -I ~/Work/mtxlib/include/ -S -Xclang -ast-list work.cpp</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p><br><br>
+</p>
+</body>
+</html>
