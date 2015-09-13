@@ -334,16 +334,13 @@ an rvalue reference overload for the copy constructor is similar.</SPAN></U></FO
 Move Semantics</FONT></FONT></FONT></H4>
 <PRE CLASS="western" STYLE="font-variant: normal"><FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">T tmp(std::move(a));</SPAN></SPAN></FONT></FONT>
 <FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">a = std::move(b); </SPAN></SPAN></FONT></FONT>
-<FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">b = std::move(tmp);</SPAN></SPAN></FONT></FONT></PRE><P>
-<BR><BR>
-</P>
-<P><BR><BR>
-</P>
+<FONT COLOR="#000000"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">b = std::move(tmp);</SPAN></SPAN></FONT></FONT></PRE>
 </BODY>
+<FONT COLOR="#000000"><FONT FACE="arial, helvetica, sans-serif"><FONT SIZE=3>Destructor prevents implicit move assignment:</FONT></FONT></FONT>
 </HTML><pre class="western" style="margin-bottom: 0.2in; font-variant: normal; font-style: normal; font-weight: normal">
 <font color="#000000"><font size="3" style="font-size: 12pt"><a href="http://en.cppreference.com/w/cpp/language/move_operator">http://en.cppreference.com/w/cpp/language/move_operator</a></font></font></pre>
-<p style="font-weight: normal"><font color="#0000ff"><font size="4" style="font-size: 14pt"><u>lvalue,
-xvalue, glvalue, rvalue, prvalue</u></font></font></p>
+<p style="font-weight: normal"><font color="#0000ff"><font size="4" style="font-size: 14pt">lvalue,
+xvalue, glvalue, rvalue, prvalue :</font></font></p>
 <p style="font-weight: normal; text-decoration: none">     
 <u>http://en.cppreference.com/w/cpp/language/value_category</u></p>
 <ul>
