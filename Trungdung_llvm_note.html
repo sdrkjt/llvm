@@ -6,14 +6,14 @@
 	<meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
 	<meta name="created" content="20150817;7405700">
 	<meta name="changedby" content="trungdung nguyen">
-	<meta name="changed" content="20150910;222255069101574">
+	<meta name="changed" content="20150913;101157908612710">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changedby" content="trungdung nguyen">
 	<style type="text/css">
 	<!--
 		@page { margin: 0.79in }
-		td p { margin-bottom: 0in; color: #000000 }
 		p { margin-bottom: 0.08in; color: #000000 }
-		pre { color: #000000 }
-		pre.cjk { font-family: "Droid Sans Fallback", monospace }
+		td p { margin-bottom: 0in; color: #000000 }
 		a:link { so-language: zxx }
 		tt.cjk { font-family: "Droid Sans Fallback", monospace }
 		tt.ctl { font-family: "Lohit Hindi", monospace }
@@ -326,7 +326,7 @@ Transformation with CLANG</b></font></p>
 </p>
 <p style="margin-bottom: 0in">clang -fms-extensions <b>-rewrite-objc</b>
 -fobjc-runtime=macosx-fragile-10.5 -x objective-c++ -fblocks
-rewrite-function-decl.mm -o – toto.cpp</p>
+rewrite-function-decl.mm [-o toto.cpp]</p>
 <p style="margin-bottom: 0in">llvm/tools/clang/lib/Frontend/Rewrite/RewriteObjC.cpp</p>
 <p style="margin-bottom: 0in"><br>
 </p>
@@ -358,8 +358,6 @@ ast-main.cpp
 Transformation with CLANG</b></font></p>
 <p style="margin-bottom: 0in"><br>
 </p>
-<p style="margin-bottom: 0in"><br>
-</p>
 <p style="margin-bottom: 0in"><font color="#0000ff"><b>-tmp
 explicite&nbsp;: rewrite all tmps</b></font></p>
 <p style="margin-bottom: 0in"><br>
@@ -371,8 +369,8 @@ called for the temporary, for non-POD</span></font></font></p>
 <p style="margin-bottom: 0in"><a href="http://clang.llvm.org/doxygen/classclang_1_1CXXBindTemporaryExpr.html"><font color="#000000"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">http://clang.llvm.org/doxygen/classclang_1_1CXXBindTemporaryExpr.html</span></font></font></font></a></p>
 <p style="margin-bottom: 0in">const S &amp;s_ref = S(); // Requires a
 CXXBindTemporaryExpr</p>
-<pre class="western"><br>
-</pre>
+<p style="margin-bottom: 0in"><br>
+</p>
 <p style="margin-bottom: 0in"><b>MaterializeTemporaryExpr&nbsp;:</b></p>
 <p style="margin-bottom: 0in"><a href="http://clang.llvm.org/doxygen/classclang_1_1MaterializeTemporaryExpr.html"><font color="#000000"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">http://clang.llvm.org/doxygen/classclang_1_1MaterializeTemporaryExpr.html</span></font></font></font></a></p>
 <p style="margin-bottom: 0in">const int &amp;r = 1.0;</p>
@@ -383,6 +381,8 @@ rewrite all declarations at the beginning</b></font></p>
 <p style="margin-bottom: 0in"><font color="#0000ff"><b>-void for all
 funcs </b></font>
 </p>
+<p style="margin-bottom: 0in"><font color="#3333ff"><b>-Sig
+globalization</b></font></p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in; page-break-before: always">****************************10/09/2015*****************************************</p>
@@ -390,14 +390,52 @@ funcs </b></font>
 -D__VSR__ -I ~/Work/mtxlib/include/ -S -Xclang -ast-list work.cpp</p>
 <p style="margin-bottom: 0in"><br>
 </p>
+<p style="margin-bottom: 0in"><b>AST development tools&nbsp;:</b></p>
+<p>*node-&gt;dump()&nbsp;;</p>
+<p>*llvm::outs()&nbsp;; llvm::errs()&nbsp;;</p>
+<p>*Stmt-&gt;printPretty</p>
+<p style="margin-left: 0.49in">	std::string SStr;</p>
+<p style="margin-left: 0.49in">	llvm::raw_string_ostream S(SStr);</p>
+<p style="margin-left: 0.49in">	Body-&gt;printPretty(S, nullptr,
+PrintingPolicy(LangOpts));</p>
+<p style="margin-left: 0.49in">	const std::string &amp;Str = S.str();</p>
+<p style="margin-left: 0.49in">	llvm::outs()&lt;&lt;Str; getchar();</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************11/09/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>Source-to-source
+Transformation with CLANG</b></font></p>
+<p style="margin-bottom: 0in"><font color="#0000ff"><b>RewriteObjC.cpp&nbsp;:
+<font color="#000000">llvm/tools/clang/lib/Frontend/Rewrite/RewriteObjC.cpp</font></b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in; font-weight: normal">HandleTopLevelSingleDecl(Decl
+*D)&nbsp;: here D is a  function declaration</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+----RewriteFunctionDecl(D)</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+----HandleDeclInMainFile(D)</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+–--|--RewriteBlocksInFunctionProtoType</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+–--|--RewriteFunctionBodyOrGlobalInitializer(Body)&nbsp;: rewrite
+body (bottom up rewrite of all children) + collect blockLiteral
+(Blocks.push_back())</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+–--|--InsertBlockLiteralsWithinFunction(D)&nbsp;</p>
+<p style="margin-bottom: 0in; font-weight: normal">
+–-----|--SynthesizeBlockLiterals(FunLocStart, FuncName)&nbsp;:
+creat block code for each block from Blocks</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">   <b>	</b></font></p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in"><br>
 </p>
-<p style="margin-bottom: 0in"><br>
-</p>
+<p style="margin-bottom: 0in; page-break-before: always">****************************13/09/2015*****************************************</p>
 <p><br><br>
 </p>
 </body>
