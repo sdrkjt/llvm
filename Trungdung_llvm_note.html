@@ -6,7 +6,12 @@
 	<meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
 	<meta name="created" content="20150817;7405700">
 	<meta name="changedby" content="trungdung nguyen">
-	<meta name="changed" content="20150913;101157908612710">
+	<meta name="changed" content="20150928;152141737853675">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changedby" content="trungdung nguyen">
+	<meta name="changedby" content="trungdung nguyen">
 	<meta name="changedby" content="trungdung nguyen">
 	<meta name="changedby" content="trungdung nguyen">
 	<style type="text/css">
@@ -14,6 +19,8 @@
 		@page { margin: 0.79in }
 		p { margin-bottom: 0.08in; color: #000000 }
 		td p { margin-bottom: 0in; color: #000000 }
+		pre { color: #000000 }
+		pre.cjk { font-family: "Droid Sans Fallback", monospace }
 		a:link { so-language: zxx }
 		tt.cjk { font-family: "Droid Sans Fallback", monospace }
 		tt.ctl { font-family: "Lohit Hindi", monospace }
@@ -394,12 +401,12 @@ globalization</b></font></p>
 <p>*node-&gt;dump()&nbsp;;</p>
 <p>*llvm::outs()&nbsp;; llvm::errs()&nbsp;;</p>
 <p>*Stmt-&gt;printPretty</p>
-<p style="margin-left: 0.49in">	std::string SStr;</p>
-<p style="margin-left: 0.49in">	llvm::raw_string_ostream S(SStr);</p>
-<p style="margin-left: 0.49in">	Body-&gt;printPretty(S, nullptr,
+<p style="margin-left: 0.49in">std::string SStr;</p>
+<p style="margin-left: 0.49in">llvm::raw_string_ostream S(SStr);</p>
+<p style="margin-left: 0.49in">Body-&gt;printPretty(S, nullptr,
 PrintingPolicy(LangOpts));</p>
-<p style="margin-left: 0.49in">	const std::string &amp;Str = S.str();</p>
-<p style="margin-left: 0.49in">	llvm::outs()&lt;&lt;Str; getchar();</p>
+<p style="margin-left: 0.49in">const std::string &amp;Str = S.str();</p>
+<p style="margin-left: 0.49in">llvm::outs()&lt;&lt;Str; getchar();</p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in; page-break-before: always">****************************11/09/2015*****************************************</p>
@@ -410,25 +417,18 @@ Transformation with CLANG</b></font></p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in; font-weight: normal">HandleTopLevelSingleDecl(Decl
-*D)&nbsp;: here D is a  function declaration</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-----RewriteFunctionDecl(D)</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-----HandleDeclInMainFile(D)</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-–--|--RewriteBlocksInFunctionProtoType</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-–--|--RewriteFunctionBodyOrGlobalInitializer(Body)&nbsp;: rewrite
-body (bottom up rewrite of all children) + collect blockLiteral
-(Blocks.push_back())</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-–--|--InsertBlockLiteralsWithinFunction(D)&nbsp;</p>
-<p style="margin-bottom: 0in; font-weight: normal">
-–-----|--SynthesizeBlockLiterals(FunLocStart, FuncName)&nbsp;:
-creat block code for each block from Blocks</p>
+*D)&nbsp;: here D is a function declaration</p>
+<p style="margin-bottom: 0in; font-weight: normal">----RewriteFunctionDecl(D)</p>
+<p style="margin-bottom: 0in; font-weight: normal">----HandleDeclInMainFile(D)</p>
+<p style="margin-bottom: 0in">–<span style="font-weight: normal">--|--RewriteBlocksInFunctionProtoType</span></p>
+<p style="margin-bottom: 0in">–<span style="font-weight: normal">--|--RewriteFunctionBodyOrGlobalInitializer(Body)&nbsp;:
+rewrite body (bottom up rewrite of all children) + collect
+blockLiteral (Blocks.push_back())</span></p>
+<p style="margin-bottom: 0in">–<span style="font-weight: normal">--|--InsertBlockLiteralsWithinFunction(D)&nbsp;</span></p>
+<p style="margin-bottom: 0in">–<span style="font-weight: normal">-----|--SynthesizeBlockLiterals(FunLocStart,
+FuncName)&nbsp;: creat block code for each block from Blocks</span></p>
 <p style="margin-bottom: 0in"><br>
 </p>
-<p style="margin-bottom: 0in"><font color="#0000ff">   <b>	</b></font></p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in"><br>
@@ -436,7 +436,96 @@ creat block code for each block from Blocks</p>
 <p style="margin-bottom: 0in"><br>
 </p>
 <p style="margin-bottom: 0in; page-break-before: always">****************************13/09/2015*****************************************</p>
-<p><br><br>
+<p style="margin-bottom: 0in"><a href="http://eli.thegreenplace.net/2012/06/08/basic-source-to-source-transformation-with-clang/">http://eli.thegreenplace.net/2012/06/08/basic-source-to-source-transformation-with-clang/</a></p>
+<p style="margin-bottom: 0in"><a href="http://eli.thegreenplace.net/2014/05/01/modern-source-to-source-transformation-with-clang-and-libtooling">http://eli.thegreenplace.net/2014/05/01/modern-source-to-source-transformation-with-clang-and-libtooling</a></p>
+<p style="margin-bottom: 0in"><a href="https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/">https://kevinaboos.wordpress.com/2013/07/23/clang-tutorial-part-ii-libtooling-example/</a></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><span style="background: #ffff00">tooling_sample&nbsp;:
+add comment at the beginning and the end of each function declaration</span></p>
+<p style="margin-bottom: 0in">command&nbsp;: build/tooling_sample
+-extra-arg-before -std=c++11 work/work.cpp –</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>ASTFrontendAction</b></p>
+<p style="margin-bottom: 0in">For each source file provided to the
+tool, a new FrontendAction is created.</p>
+<p style="margin-bottom: 0in">-&gt;CreateASTConsumer</p>
+<p style="margin-bottom: 0in">-&gt;ParseAST&nbsp;: launch Clang
+parser</p>
+<p style="margin-bottom: 0in">-&gt;EndSourceFileAction</p>
+<p style="margin-bottom: 0in"><b>ASTConsummmer</b></p>
+<p style="margin-bottom: 0in">*Implementation of the ASTConsumer
+interface for reading an AST produced by the Clang parser.</p>
+<p style="margin-bottom: 0in">llvm/tools/clang/include/clang/AST/ASTConsumer.h</p>
+<p style="margin-bottom: 0in">-&gt;HandleTopLevelDecl</p>
+<p style="margin-bottom: 0in">-&gt;Visitor&nbsp;: like TreeWalker in
+Octave</p>
+<p style="margin-bottom: 0in"><b>ASTVisitor</b></p>
+<p style="margin-bottom: 0in">include/clang/AST/RecursiveASTVisitor.h</p>
+<p style="margin-bottom: 0in">class MyASTVisitor : public
+RecursiveASTVisitor&lt;MyASTVisitor&gt;</p>
+<p style="margin-bottom: 0in">-&gt;VisitStmt</p>
+<p style="margin-bottom: 0in">-&gt;VisitFunctionDecl</p>
+<p style="margin-bottom: 0in">…</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">****************************21/09/2015*****************************************</p>
+<p style="margin-bottom: 0in">ASTMatchers.h</p>
+<p style="margin-bottom: 0in">llvm/tools/clang/include/clang/ASTMatchers/ASTMatchers.h</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">ASTDumper.cpp&nbsp;: je parcour l'arbre
+et je dump</p>
+<p style="margin-bottom: 0in">-&gt;Visitor like treewalker&nbsp;:
+comment je parcour l'arbre 
+</p>
+<p style="margin-bottom: 0in">-&gt;Action dump&nbsp;: quest-ce je
+dump à chaque visite</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<pre class="western"><b>TreeTransform.h</b></pre>
+<p style="margin-bottom: 0in">A semantic tree transformation that
+allows one to transform one abstract syntax tree into another</p>
+<p style="margin-bottom: 0in">lib/Sema/TreeTransform.h</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">****************************23/09/2015*****************************************</p>
+<p style="margin-bottom: 0in"><font color="#3333ff"><b>Sout archi</b></font></p>
+<p style="margin-bottom: 0in"><b>ASTFrontendAction</b></p>
+<p style="margin-bottom: 0in; font-weight: normal">*clangAddons/lib/Interface/Interface.cpp</p>
+<p style="margin-bottom: 0in; font-weight: normal">class
+ScoutCompiler</p>
+<p style="margin-bottom: 0in; font-weight: normal">ScoutClangAddonAction&nbsp;:
+ParseAST 
+</p>
+<p style="margin-bottom: 0in; font-weight: normal">ParseAST(CI.getPreprocessor(),
+&amp;CI.getASTConsumer(),
+CI.getASTContext(),CI.getFrontendOpts().ShowStats);</p>
+<p style="margin-bottom: 0in; font-weight: normal">RewriteInlineAction</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>ASTConsummmer&nbsp;: </b>
+</p>
+<p style="margin-bottom: 0in; font-weight: normal">*clangAddons/include/clang/Vectorizing/Configuration.h</p>
+<p style="margin-bottom: 0in; font-weight: normal">*clangAddons/lib/Vectorizing/Configuration.h</p>
+<p style="margin-bottom: 0in; font-weight: normal">ParseConfigurationConsumer</p>
+<p style="margin-bottom: 0in; font-weight: normal">-&gt;HandleTranslationUnit</p>
+<p style="margin-bottom: 0in; font-weight: normal">-&gt;Configuration&amp;
+m_Configuration;</p>
+<p style="margin-bottom: 0in; font-weight: normal">-&gt;llvm::OwningPtr&lt;CompilerInstance&gt;&amp;
+m_Compiler;</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>StmtClone.h</b>&nbsp;:
+clangAddons/include/clang/ASTProcessing/</p>
+<p style="margin-bottom: 0in">#define DECLARE_CLONE_FN(CLASS) Stmt*
+Visit ## CLASS(CLASS *Node);</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
 </p>
 </body>
 </html>
